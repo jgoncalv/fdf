@@ -12,46 +12,29 @@
 
 #include "fdf.h"
 
-/*static int	colorize(double z, int zmax)
+static int	colorize(float z, float zmax)
 {
 	int color;
-	int red;
-	int green;
-	int blue;
+	float red;
+	float green;
+	float blue;
 
-	color = 0xFFFFFF;
+	color = 0x00FFFF;
 	zmax = zmax == 0 ? 1 : zmax;
  	red = 255 - (((color / 256 / 256) * z)) / zmax;
 	green = (((color / 256 % 256) * z)) / zmax;
 	blue = (((color % 256) * z)) / zmax;
 	color = red * 256 * 256 + green * 256 + blue;
 	return (color);
-}*/
+}
 
 int		get_color(t_draw draw, t_mlx *mlx, int x)
 {
-/*	int	color;
-	double	z;
+	int	color;
+	float	z;
 	int	add;
 
-	*/
-	(void)draw;
-	(void)mlx;
-	(void)x;
-	/*
 	add = (mlx->zmin < 0 ? abs(mlx->zmin) : mlx->zmin);
-	if (mlx->zmin < 0)
-	{
-		add = abs(mlx->zmin);
-		draw.zi += add;
-		draw.zf += add;
-	}
-	else
-	{
-		add = mlx->zmin;
-		draw.zi -= add;
-		draw.zf -= add;
-	}
 	if (draw.zi > draw.zf)
 	{
 		if (draw.xi > draw.xf)
@@ -81,6 +64,6 @@ int		get_color(t_draw draw, t_mlx *mlx, int x)
 		color = colorize(z + 1, mlx->zmax + 1);
 	}
 	else
-		color = colorize(draw.zi + 1, mlx->zmax + 1);*/
-	return (0xFFFFFF);
+		color = colorize(draw.zi + 1, mlx->zmax + 1);
+	return (color);
 }

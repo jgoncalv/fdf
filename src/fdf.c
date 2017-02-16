@@ -49,8 +49,9 @@ void		fdf(t_list *lmap)
 	mlx.roty = mlx.rotx / 2;
 	if ((mlx.coefz = mlx.rotx / ft_res_zero(mlx.zmax - mlx.zmin)) == 0)
 		mlx.coefz = 1;
+	mlx.add_coefz = mlx.coefz;
 	mlx.offsetx = mlx.ymax * (mlx.win_w / (mlx.ymax + mlx.xmax - 1));
-	mlx.offsety = 0;
+	mlx.offsety = mlx.zmax;
 	init_mlx(&mlx, "fdf");
 	mlx_image(&mlx);
 	expose(&mlx);

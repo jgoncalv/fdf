@@ -31,15 +31,15 @@ static void	zoom_image(t_mlx *mlx, int keycode)
 	mlx_clear_set_image(mlx);
 	if (keycode == 69)
 	{
-		mlx->rotx += 1;
-		mlx->roty += 1;
+		mlx->rotx++;
+		mlx->roty++;
 	}
 	if (keycode == 78)
 	{
 		if (mlx->rotx - 1 > 0 && mlx->roty - 1 > 0)
 		{
-			mlx->rotx -= 1;
-			mlx->roty -= 1;
+			mlx->rotx--;
+			mlx->roty--;
 		}
 	}
 	expose(mlx);
@@ -50,11 +50,11 @@ static void	change_z(t_mlx *mlx, int keycode)
 	mlx_clear_set_image(mlx);
 	if (keycode == 116)
 	{
-		mlx->coefz++;
+		mlx->coefz += mlx->add_coefz;
 	}
 	if (keycode == 121)
 	{
-		mlx->coefz--;
+		mlx->coefz -= mlx->add_coefz;
 	}
 	expose(mlx);
 }
