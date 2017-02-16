@@ -17,6 +17,7 @@ static t_list	*get_map(char *file)
 	int		fd;
 	int		y;
 	char	*line;
+	int		ret;
 	t_list	*lmap;
 
 	y = 0;
@@ -27,7 +28,7 @@ static t_list	*get_map(char *file)
 		perror("Error ");
 		exit(1);
 	}
-	while (get_next_line(fd, &line) == 1)
+	while ((ret = get_next_line(fd, &line)) == 1)
 	{
 		if (!parser(&lmap, line, y++))
 		{
@@ -37,6 +38,11 @@ static t_list	*get_map(char *file)
 		}
 	}
 	close(fd);
+	if (ret == -1)
+	{
+		ft_putstr_fd("Error.\n", 2);
+		exit(1);
+	}
 	return (lmap);
 }
 

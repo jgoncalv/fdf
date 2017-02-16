@@ -65,6 +65,7 @@ typedef struct		s_mlx
 	int				bpp;
 	int				sl;
 	int				endian;
+	int				coefz;
 }					t_mlx;
 
 /*

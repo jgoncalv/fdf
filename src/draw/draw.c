@@ -20,16 +20,16 @@ static void	ft_draw(t_mlx *mlx, t_draw *draw, t_list *lmap, int x)
 	draw->zi = map->z[x];
 	draw->zf = (x + 1 < map->x ? map->z[x + 1] : draw->zi);
 	draw->xi = draw->offsetx;
-	draw->yi = draw->offsety - map->z[x];
+	draw->yi = draw->offsety - (mlx->coefz * map->z[x]);
 	draw->xf = (x + 1 < map->x ? draw->offsetx + mlx->rotx : draw->xi);
 	draw->yf = (x + 1 < map->x ? draw->offsety
-		+ mlx->roty - map->z[x + 1] : draw->yi);
+		+ mlx->roty - (mlx->coefz * map->z[x + 1]) : draw->yi);
 	draw_line(mlx, *draw);
 	if (lmap->next)
 	{
 		draw->xf = draw->offsetx - mlx->rotx;
 		draw->yf = draw->offsety + mlx->roty -
-		((t_map*)lmap->next->content)->z[x];
+		(mlx->coefz * ((t_map*)lmap->next->content)->z[x]);
 		draw->zf = ((t_map*)lmap->next->content)->z[x];
 		draw_line(mlx, *draw);
 	}

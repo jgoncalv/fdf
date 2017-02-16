@@ -46,7 +46,9 @@ void		fdf(t_list *lmap)
 	mlx.map = lmap;
 	get_coord_max(&mlx);
 	mlx.rotx = mlx.win_w / (mlx.ymax + mlx.xmax);
-	mlx.roty = mlx.rotx / mlx.ymax;
+	mlx.roty = mlx.rotx / 2;
+	if ((mlx.coefz = mlx.rotx / ft_res_zero(mlx.zmax - mlx.zmin)) == 0)
+		mlx.coefz = 1;
 	mlx.offsetx = mlx.ymax * (mlx.win_w / (mlx.ymax + mlx.xmax - 1));
 	mlx.offsety = 0;
 	init_mlx(&mlx, "fdf");

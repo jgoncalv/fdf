@@ -16,13 +16,13 @@ static void	move_image(t_mlx *mlx, int keycode)
 {
 	mlx_clear_set_image(mlx);
 	if (keycode == 126)
-		mlx->offsety -= mlx->roty;
+		mlx->offsety -= mlx->roty * 2;
 	if (keycode == 125)
-		mlx->offsety += mlx->roty;
+		mlx->offsety += mlx->roty * 2;
 	if (keycode == 124)
-		mlx->offsetx += mlx->rotx;
+		mlx->offsetx += mlx->rotx * 2;
 	if (keycode == 123)
-		mlx->offsetx -= mlx->rotx;
+		mlx->offsetx -= mlx->rotx * 2;
 	expose(mlx);
 }
 
@@ -45,18 +45,16 @@ static void	zoom_image(t_mlx *mlx, int keycode)
 	expose(mlx);
 }
 
-static void	iso_image(t_mlx *mlx, int keycode)
+static void	change_z(t_mlx *mlx, int keycode)
 {
 	mlx_clear_set_image(mlx);
 	if (keycode == 116)
 	{
-		if (mlx->roty - 1 > 0)
-			mlx->roty -= 1;
+		mlx->coefz++;
 	}
 	if (keycode == 121)
 	{
-		if (mlx->roty < mlx->rotx)
-			mlx->roty += 1;
+		mlx->coefz--;
 	}
 	expose(mlx);
 }
@@ -75,6 +73,6 @@ int			keyhook(int keycode, t_mlx *mlx)
 	if (keycode == 69 || keycode == 78)
 		zoom_image(mlx, keycode);
 	if (keycode == 116 || keycode == 121)
-		iso_image(mlx, keycode);
+		change_z(mlx, keycode);
 	return (0);
 }

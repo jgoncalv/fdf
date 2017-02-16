@@ -28,15 +28,15 @@ LDLIBS = -lft -lmlx -framework OpenGL -framework AppKit
 SRC_PATH = src
 
 SRC_NAME = fdf.c\
-		parser/parser.c\
+		main.c\
+		ft_init.c\
+		mlx/pixel_to_image.c\
+		mlx/mlx.c\
 		draw/draw.c\
 		draw/draw_line.c\
-		hook/keyhook.c\
-		pixel_to_image.c\
-		mlx/mlx.c\
 		draw/get_color.c\
-		main.c\
-		ft_init.c
+		hook/keyhook.c\
+		parser/parser.c
 
 AR = ar rc
 

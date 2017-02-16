@@ -48,10 +48,7 @@ int			parser(t_list **lmap, char *line, int y)
 	ft_tabdel((void**)tab, ft_tablen(tab));
 	if (!(nmap = ft_lstnew(&map, sizeof(t_map))))
 		return (0);
-	if (*lmap == NULL)
-		*lmap = nmap;
-	else
-		ft_lstadd_end(*lmap, nmap);
+	ft_lstadd_end(lmap, nmap);
 	if (!*lmap)
 	{
 		ft_putstr_fd("Error.\n", 2);
