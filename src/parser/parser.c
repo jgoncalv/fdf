@@ -39,13 +39,13 @@ int			parser(t_list **lmap, char *line, int y)
 	if (!(tab = ft_strsplit(line, ' ')) || (*lmap
 		&& !check_x(tab, *(t_map*)(*lmap)->content)) || !check_int(tab))
 	{
-		ft_tabdel((void**)tab, ft_tablen(tab));
+		ft_tabdel(tab, ft_tablen(tab));
 		return (0);
 	}
 	map.x = ft_tablen(tab) - 1;
 	map.y = y;
 	map.z = ft_atoi_tab(tab);
-	ft_tabdel((void**)tab, ft_tablen(tab));
+	ft_tabdel(tab, ft_tablen(tab));
 	if (!(nmap = ft_lstnew(&map, sizeof(t_map))))
 		return (0);
 	ft_lstadd_end(lmap, nmap);

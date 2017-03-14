@@ -21,7 +21,6 @@ static t_list	*get_map(char *file)
 	t_list	*lmap;
 
 	y = 0;
-	fd = 0;
 	lmap = NULL;
 	if ((fd = open(file, O_RDONLY)) == -1)
 	{
@@ -29,16 +28,9 @@ static t_list	*get_map(char *file)
 		exit(1);
 	}
 	while ((ret = get_next_line(fd, &line)) == 1)
-	{
 		if (!parser(&lmap, line, y++))
-		{
-			ft_putstr_fd("Error.\n", 2);
-			close(fd);
-			exit(1);
-		}
-	}
-	close(fd);
-	if (ret == -1)
+			ret = -1;
+	if ((close(fd) == -1) || (ret == -1))
 	{
 		ft_putstr_fd("Error.\n", 2);
 		exit(1);
@@ -46,10 +38,21 @@ static t_list	*get_map(char *file)
 	return (lmap);
 }
 
-int	main(int ac, char **av)
+int				main(int ac, char **av)
 {
+	t_list	*lst;
+
 	if (ac == 2)
-		fdf(get_map(av[1]));
+	{
+		if (!(lst = get_map(av[1])) || !lst->content
+			|| ((t_map*)lst->content)->x < 2
+			|| lst->next == NULL)
+		{
+			ft_putstr_fd("Error.\n", 2);
+			return (1);
+		}
+		fdf(lst);
+	}
 	else
 		ft_putstr_fd("Usage : ./fdf map\n", 2);
 	return (0);

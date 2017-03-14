@@ -35,6 +35,7 @@ int		expose(t_mlx *mlx)
 {
 	draw(mlx, mlx->map);
 	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img, 0, 0);
+	menu(mlx);
 	return (0);
 }
 

@@ -38,7 +38,7 @@ static void		get_coord_max(t_mlx *mlx)
 	}
 }
 
-void		fdf(t_list *lmap)
+void			fdf(t_list *lmap)
 {
 	t_mlx	mlx;
 

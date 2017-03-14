@@ -36,7 +36,8 @@ SRC_NAME = fdf.c\
 		draw/draw_line.c\
 		draw/get_color.c\
 		hook/keyhook.c\
-		parser/parser.c
+		parser/parser.c\
+		draw/menu.c
 
 AR = ar rc
 

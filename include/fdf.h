@@ -87,6 +87,7 @@ void				draw_line(t_mlx *mlx, t_draw draw);
 void				pixel_to_image(t_mlx *mlx, int x, int y, int color);
 int					get_color(t_draw draw, t_mlx *mlx, int x);
 void				fdf(t_list *lmap);
+void				menu(t_mlx *mlx);
 
 /*
 ** MLX
